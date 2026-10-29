@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080809">
+  <meta name="description" content="A cinematic fan-made BLEACH-inspired experience. Enter the final divide between shadow, steel, and spiritual pressure.">
+  <title>THE FINAL DIVIDE — A BLEACH Fan Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:dark;--ink:#080809;--paper:#f1eee8;--muted:#9c9998;--red:#e53a45;--red-hot:#ff3447;--line:rgba(255,255,255,.13);--blue:#76b9ff;--serif:Georgia,'Times New Roman',serif;--display:'Barlow Condensed',Impact,sans-serif;--body:'Manrope',Arial,sans-serif;--mono:'DM Mono',monospace}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--body);overflow-x:hidden}
+    body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:30;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");mix-blend-mode:soft-light}
+    a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}button:focus-visible,a:focus-visible{outline:2px solid var(--red-hot);outline-offset:5px}
+    .progress{position:fixed;z-index:60;top:0;left:0;width:100%;height:2px;background:transparent}.progress span{display:block;width:0;height:100%;background:var(--red-hot);box-shadow:0 0 12px var(--red-hot)}
+    .nav{position:fixed;z-index:50;top:0;left:0;right:0;height:76px;padding:0 6vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
+    .nav.scrolled{background:rgba(8,8,9,.84);backdrop-filter:blur(18px);border-color:var(--line)}
+    .brand{display:flex;align-items:center;gap:11px;font-size:11px;letter-spacing:.2em;font-weight:800}.brand-mark{width:28px;height:28px;border:1px solid var(--red);display:grid;place-items:center;transform:rotate(45deg)}.brand-mark span{transform:rotate(-45deg);font:700 16px var(--display);color:var(--red)}
+    .nav-links{display:flex;align-items:center;gap:34px;font:10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#b7b3b0}.nav-links a{transition:color .2s}.nav-links a:hover{color:#fff}
+    .nav-cta{padding:11px 15px;border:1px solid var(--line);font:10px var(--mono);letter-spacing:.12em;text-transform:uppercase;transition:background .2s,border .2s}.nav-cta:hover{background:var(--red);border-color:var(--red)}
+    .hero{position:relative;min-height:790px;height:100svh;max-height:1100px;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--line);isolation:isolate}
+    .hero-bg{position:absolute;inset:0;z-index:-4;background:radial-gradient(ellipse at 73% 48%,rgba(113,15,26,.25),transparent 35%),radial-gradient(ellipse at 20% 85%,rgba(94,10,18,.18),transparent 40%),linear-gradient(110deg,#080809 0%,#0b090b 52%,#10090b 100%)}
+    .hero-grid{position:absolute;inset:0;z-index:-3;opacity:.16;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(90deg,black,transparent 92%)}
+    .orb{position:absolute;z-index:-2;width:min(53vw,720px);aspect-ratio:1;right:5%;top:50%;transform:translateY(-46%);border-radius:50%;background:radial-gradient(circle at 40% 35%,rgba(245,235,226,.09),transparent 34%),radial-gradient(circle,rgba(130,15,30,.16),rgba(8,8,9,0) 67%);filter:blur(2px);animation:orbPulse 7s ease-in-out infinite}
+    .ring{position:absolute;z-index:-1;right:8%;top:50%;width:min(47vw,640px);aspect-ratio:1;border:1px solid rgba(233,220,215,.12);border-radius:50%;transform:translateY(-45%) rotate(-18deg);box-shadow:0 0 0 35px rgba(255,255,255,.012),0 0 0 95px rgba(255,255,255,.008);animation:ringTurn 48s linear infinite}
+    .ring::before,.ring::after{content:"";position:absolute;inset:12%;border:1px solid rgba(229,58,69,.22);border-radius:50%;transform:rotate(47deg) scaleX(.62)}.ring::after{inset:25%;border-color:rgba(255,255,255,.13);transform:rotate(-35deg) scaleY(.72)}
+    .slash{position:absolute;z-index:1;right:22%;top:12%;height:80%;width:2px;background:linear-gradient(transparent,rgba(255,52,71,.04) 15%,rgba(255,52,71,.8) 49%,rgba(255,255,255,.72) 50%,rgba(255,52,71,.28) 51%,transparent 87%);filter:drop-shadow(0 0 12px rgba(255,52,71,.7));transform:rotate(29deg);opacity:.7;animation:slashFlash 8s ease-in-out infinite}
+    .slash.two{right:18%;top:27%;height:50%;transform:rotate(-43deg);opacity:.22;animation-delay:3s}
+    .particles{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}.particle{position:absolute;width:2px;height:2px;border-radius:50%;background:#f7d9d6;opacity:0;box-shadow:0 0 9px 2px rgba(229,58,69,.65);animation:floatUp var(--dur,8s) linear infinite;animation-delay:var(--delay,0s)}
+    .hero-content{width:min(1240px,88%);margin:0 auto;padding-top:64px;position:relative;z-index:2}
+    .eyebrow{display:flex;align-items:center;gap:13px;font:10px var(--mono);letter-spacing:.23em;text-transform:uppercase;color:#d7c9c7}.eyebrow::before{content:"";display:block;width:34px;height:1px;background:var(--red)}
+    .hero h1{margin:25px 0 22px;font:900 clamp(5.5rem,12.4vw,11.7rem)/.76 var(--display);letter-spacing:-.045em;text-transform:uppercase;max-width:900px}
+    .hero h1 span{display:block}.hero h1 .outline{color:transparent;-webkit-text-stroke:1px rgba(241,238,232,.68);padding-left:clamp(24px,7vw,100px)}.hero h1 .red{color:var(--red);font-size:.76em;letter-spacing:.03em;padding-left:clamp(65px,14vw,190px);line-height:1.03}
+    .hero-copy{max-width:400px;margin:28px 0 0 7px;color:#aaa4a1;font-size:13px;line-height:1.9}.hero-actions{display:flex;align-items:center;gap:25px;margin:34px 0 0 7px}
+    .button-primary{position:relative;display:inline-flex;align-items:center;gap:24px;background:var(--red);padding:16px 20px;font:11px var(--mono);letter-spacing:.1em;text-transform:uppercase;overflow:hidden;transition:transform .2s,background .2s}.button-primary::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.18),transparent 70%);transform:translateX(-120%);transition:transform .6s}.button-primary:hover{background:#fa3c4c;transform:translateY(-2px)}.button-primary:hover::before{transform:translateX(120%)}.button-primary span,.text-link span{position:relative}.text-link{display:inline-flex;gap:10px;align-items:center;font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#c5bfbb}.text-link:hover{color:white}.arrow{font-size:17px}
+    .hero-index{position:absolute;right:6vw;bottom:45px;display:flex;align-items:center;gap:15px;font:10px var(--mono);letter-spacing:.12em;color:#8c8584}.hero-index strong{font-size:13px;color:var(--paper);font-weight:400}.hero-index i{display:block;width:70px;height:1px;background:var(--red)}
+    .vertical-label{position:absolute;right:5.7vw;top:47%;writing-mode:vertical-rl;font:9px var(--mono);letter-spacing:.25em;color:#797172}
+    .section{padding:130px 6vw;position:relative}.section-inner{width:min(1240px,100%);margin:auto}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:52px}.kicker{font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:12px}.kicker::before{content:"";width:22px;height:1px;background:currentColor}.section h2{font:800 clamp(3.3rem,7vw,6.6rem)/.84 var(--display);letter-spacing:-.02em;text-transform:uppercase;margin:18px 0 0}.section h2 em{font-family:var(--serif);font-weight:400;text-transform:none;letter-spacing:-.05em;color:var(--red);font-size:.84em}.section-note{max-width:270px;color:#938e8d;font-size:12px;line-height:1.8}
+    .factions{background:#0b0b0c;border-bottom:1px solid var(--line);border-top:1px solid var(--line)}
+    .faction-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.faction-tab{padding:12px 16px;border:1px solid var(--line);background:transparent;color:#a5a09e;font:10px var(--mono);letter-spacing:.13em;text-transform:uppercase;cursor:pointer;transition:all .25s}.faction-tab:hover,.faction-tab[aria-selected="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+    .faction-panel{min-height:365px;display:grid;grid-template-columns:1.05fr .95fr;border:1px solid var(--line);background:linear-gradient(115deg,rgba(255,255,255,.035),transparent 60%);overflow:hidden}
+    .faction-copy{padding:clamp(28px,5vw,64px);display:flex;flex-direction:column;justify-content:center}.faction-number{font:10px var(--mono);letter-spacing:.2em;color:var(--red)}.faction-copy h3{font:800 clamp(3rem,6vw,5.8rem)/.85 var(--display);letter-spacing:-.02em;text-transform:uppercase;margin:18px 0}.faction-copy p{max-width:440px;font-size:13px;line-height:1.9;color:#aaa4a1}.faction-meta{margin-top:25px;padding-top:20px;border-top:1px solid var(--line);display:flex;gap:40px}.meta-label{display:block;font:9px var(--mono);letter-spacing:.14em;color:#77716f;margin-bottom:8px}.meta-value{font:12px var(--mono);letter-spacing:.04em}.faction-art{position:relative;min-height:350px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 48%,rgba(229,58,69,.16),transparent 58%),linear-gradient(140deg,rgba(255,255,255,.025),transparent)}
+    .sigil{position:relative;width:min(65%,280px);aspect-ratio:1;border:1px solid rgba(255,255,255,.2);border-radius:50%;display:grid;place-items:center;transition:transform .5s}.sigil::before,.sigil::after{content:"";position:absolute;inset:9%;border:1px solid rgba(229,58,69,.6);transform:rotate(45deg) scaleX(.62)}.sigil::after{inset:20%;border-color:rgba(255,255,255,.28);transform:rotate(-45deg) scaleY(.72)}.sigil-symbol{font:900 clamp(6rem,12vw,10rem)/1 var(--display);color:rgba(255,255,255,.88);text-shadow:0 0 32px rgba(229,58,69,.4);position:relative;z-index:2}.sigil-caption{position:absolute;bottom:28px;right:28px;font:9px var(--mono);letter-spacing:.16em;color:#898180;text-transform:uppercase}
+    .faction-panel[data-faction="quincy"] .faction-art{background:radial-gradient(ellipse at 50% 48%,rgba(57,125,214,.18),transparent 58%),linear-gradient(140deg,rgba(255,255,255,.025),transparent)}.faction-panel[data-faction="quincy"] .sigil::before{border-color:rgba(118,185,255,.7)}.faction-panel[data-faction="quincy"] .sigil-symbol{text-shadow:0 0 32px rgba(118,185,255,.45)}.faction-panel[data-faction="hollow"] .faction-art{background:radial-gradient(ellipse at 50% 48%,rgba(191,190,177,.15),transparent 58%),linear-gradient(140deg,rgba(255,255,255,.025),transparent)}.faction-panel[data-faction="hollow"] .sigil::before{border-color:rgba(212,207,190,.65)}
+    .arsenal{background:var(--paper);color:var(--ink)}.arsenal .kicker{color:#9f1c2b}.arsenal .section-note{color:#6d6866}.arsenal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(8,8,9,.17);border:1px solid rgba(8,8,9,.17)}
+    .arsenal-card{background:var(--paper);min-height:300px;padding:32px 30px;position:relative;overflow:hidden;transition:background .3s,color .3s}.arsenal-card:hover{background:#111;color:var(--paper)}.arsenal-card .card-top{display:flex;justify-content:space-between;align-items:center;font:10px var(--mono);letter-spacing:.12em;color:#79716e}.arsenal-card:hover .card-top{color:#c1b8b6}.card-symbol{height:130px;display:flex;align-items:center;justify-content:center;font:900 7rem/.9 var(--display);color:var(--red);transition:transform .4s,text-shadow .4s}.arsenal-card:hover .card-symbol{transform:scale(1.1) rotate(-5deg);text-shadow:0 0 28px rgba(229,58,69,.45)}.arsenal-card h3{font:800 2rem/.9 var(--display);text-transform:uppercase;margin:0 0 12px}.arsenal-card p{font-size:11px;line-height:1.8;color:#6d6866;max-width:260px}.arsenal-card:hover p{color:#b8b0ad}
+    .sequence{overflow:hidden}.sequence::before{content:"";position:absolute;width:500px;height:500px;border:1px solid rgba(229,58,69,.1);border-radius:50%;right:-200px;top:5%;box-shadow:0 0 0 70px rgba(229,58,69,.02),0 0 0 140px rgba(229,58,69,.015)}.sequence-list{border-top:1px solid var(--line)}.sequence-item{display:grid;grid-template-columns:90px 1fr 220px;align-items:center;gap:30px;padding:28px 0;border-bottom:1px solid var(--line);transition:padding .25s}.sequence-item:hover{padding-left:14px;padding-right:14px}.sequence-no{font:11px var(--mono);color:var(--red)}.sequence-title{font:700 clamp(1.7rem,3.5vw,3.2rem)/.95 var(--display);text-transform:uppercase}.sequence-desc{font-size:11px;line-height:1.8;color:#8e8887}.sequence-state{font:9px var(--mono);letter-spacing:.13em;text-transform:uppercase;color:#aaa2a0;text-align:right}
+    .finale{min-height:520px;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--line);background:radial-gradient(ellipse at 50% 100%,rgba(133,15,30,.24),transparent 55%),#09090a}.finale::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.3)),repeating-linear-gradient(115deg,transparent 0 90px,rgba(255,255,255,.018) 91px 92px,transparent 93px 180px)}.finale-content{position:relative;padding:80px 24px}.finale h2{font:900 clamp(4.4rem,12vw,10rem)/.76 var(--display);text-transform:uppercase;letter-spacing:-.04em;margin:25px 0}.finale h2 span{display:block;color:var(--red)}.finale p{max-width:400px;margin:25px auto;color:#aaa1a0;font-size:12px;line-height:1.8}.footer{padding:28px 6vw;display:flex;justify-content:space-between;align-items:center;gap:24px;border-top:1px solid var(--line);font:9px var(--mono);letter-spacing:.1em;color:#77716f;text-transform:uppercase}.footer strong{color:#c7c0bd;font-weight:500}.footer a:hover{color:white}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.65,.25,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+    .toast{position:fixed;z-index:70;bottom:24px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--paper);color:var(--ink);padding:12px 18px;font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase;transition:opacity .25s,transform .25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @keyframes orbPulse{0%,100%{opacity:.7;scale:1}50%{opacity:1;scale:1.06}}@keyframes ringTurn{to{rotate:360deg}}@keyframes slashFlash{0%,82%,100%{opacity:.25}84%{opacity:.9}86%{opacity:.45}88%{opacity:.8}90%{opacity:.25}}@keyframes floatUp{0%{opacity:0;transform:translate3d(0,20px,0) scale(.5)}15%{opacity:.8}85%{opacity:.4}100%{opacity:0;transform:translate3d(var(--drift,30px),-130px,0) scale(1.2)}}
+    @media(max-width:800px){.nav{height:66px;padding:0 5vw}.nav-links{gap:16px}.nav-links a:not(:last-child){display:none}.hero{min-height:720px;max-height:950px}.hero-content{width:90%;padding-top:50px}.hero h1{font-size:clamp(5.1rem,17vw,9rem)}.orb{width:90vw;right:-25%;top:56%;opacity:.7}.ring{width:75vw;right:-7%;top:58%}.slash{right:19%}.vertical-label{display:none}.section{padding:95px 5vw}.section-head{align-items:flex-start;flex-direction:column;margin-bottom:35px}.section-note{max-width:440px}.faction-panel{grid-template-columns:1fr}.faction-art{min-height:260px;grid-row:1}.faction-copy{padding:30px}.sigil{width:190px}.sigil-symbol{font-size:7rem}.arsenal-grid{grid-template-columns:1fr}.arsenal-card{min-height:245px;padding:25px}.card-symbol{height:90px;font-size:5rem}.sequence-item{grid-template-columns:42px 1fr;gap:14px;padding:23px 0}.sequence-desc{grid-column:2}.sequence-state{display:none}.footer{padding:24px 5vw;flex-wrap:wrap}.hero-index{right:5vw;bottom:25px}}
+    @media(max-width:460px){.brand{font-size:9px;letter-spacing:.14em}.brand-mark{width:24px;height:24px}.nav-cta{padding:9px 10px;font-size:9px}.hero{min-height:690px}.hero h1{font-size:clamp(4.7rem,18vw,6.5rem)}.hero h1 .red{padding-left:55px}.hero-copy{max-width:300px;font-size:12px}.hero-actions{gap:17px;flex-wrap:wrap}.button-primary{padding:14px 15px}.hero-index{font-size:8px}.section h2{font-size:3.5rem}.faction-meta{gap:25px}.faction-tab{padding:10px 12px;font-size:9px}.finale h2{font-size:4.4rem}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="The Final Divide home"><span class="brand-mark"><span>斬</span></span><span>THE FINAL DIVIDE</span></a>
+    <nav class="nav-links" aria-label="Main navigation"><a href="#factions">Factions</a><a href="#arsenal">Abilities</a><a href="#sequence">The war</a></nav>
+    <a class="nav-cta" href="#finale">Enter the war <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-bg"></div><div class="hero-grid"></div><div class="orb"></div><div class="ring"></div><div class="slash"></div><div class="slash two"></div><div class="particles" id="particles" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="eyebrow">A fan-made anime experience <span>／</span> 001</div>
+        <h1 id="hero-title"><span>THE</span><span class="outline">FINAL</span><span class="red">DIVIDE</span></h1>
+        <p class="hero-copy">When the balance between worlds shatters, only the edge of a blade remains. Step into a cinematic tribute to the war between shadow, steel, and spiritual pressure.</p>
+        <div class="hero-actions"><a class="button-primary" href="#factions"><span>Choose your side</span><span class="arrow" aria-hidden="true">↗</span></a><a class="text-link" href="#arsenal"><span>Explore the power</span><span class="arrow" aria-hidden="true">↓</span></a></div>
+      </div>
+      <div class="vertical-label">THE THOUSAND-YEAR CONFLICT — REAWAKENED</div>
+      <div class="hero-index"><strong>01</strong><i></i><span>THE BEGINNING OF THE END</span></div>
+    </section>
+
+    <section class="section factions" id="factions">
+      <div class="section-inner">
+        <div class="section-head reveal"><div><div class="kicker">Choose your allegiance</div><h2>Three forces.<br><em>One fate.</em></h2></div><p class="section-note">Every world has its protectors. Every power has a price. Choose the force that defines your path through the final conflict.</p></div>
+        <div class="faction-tabs reveal" role="tablist" aria-label="Choose a faction">
+          <button class="faction-tab" id="tab-reaper" role="tab" aria-selected="true" aria-controls="faction-panel" data-faction="reaper">01 / Soul Reapers</button>
+          <button class="faction-tab" id="tab-quincy" role="tab" aria-selected="false" aria-controls="faction-panel" data-faction="quincy" tabindex="-1">02 / Quincy</button>
+          <button class="faction-tab" id="tab-hollow" role="tab" aria-selected="false" aria-controls="faction-panel" data-faction="hollow" tabindex="-1">03 / Hollows</button>
+        </div>
+        <article class="faction-panel reveal" id="faction-panel" data-faction="reaper" role="tabpanel" aria-labelledby="tab-reaper" tabindex="0">
+          <div class="faction-copy" aria-live="polite">
+            <span class="faction-number" id="faction-number">FACTION 001 — THE BALANCE</span>
+            <h3 id="faction-title">Soul<br>Reapers</h3>
+            <p id="faction-description">Guardians of the cycle between life and death. They carry the weight of every soul and stand against the collapse of the worlds with discipline, resolve, and a blade that answers to its wielder.</p>
+            <div class="faction-meta"><div><span class="meta-label">CORE FORCE</span><span class="meta-value" id="faction-force">ZANPAKUTŌ</span></div><div><span class="meta-label">COMBAT STYLE</span><span class="meta-value" id="faction-style">RELEASE & REVEAL</span></div></div>
+          </div>
+          <div class="faction-art" aria-hidden="true"><div class="sigil"><span class="sigil-symbol" id="faction-symbol">斬</span></div><span class="sigil-caption" id="faction-caption">Spiritual pressure / 01</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section arsenal" id="arsenal">
+      <div class="section-inner">
+        <div class="section-head reveal"><div><div class="kicker">Power beyond limits</div><h2>Release the<br><em>impossible.</em></h2></div><p class="section-note">The moment restraint breaks. Three iconic power fantasies reimagined as a sharp, interactive visual system.</p></div>
+        <div class="arsenal-grid reveal">
+          <article class="arsenal-card"><div class="card-top"><span>ABILITY / 001</span><span>斬月</span></div><div class="card-symbol" aria-hidden="true">月</div><h3>Bankai</h3><p>A single release. A world of pressure. Let the blade speak in silence.</p></article>
+          <article class="arsenal-card"><div class="card-top"><span>ABILITY / 002</span><span>霊圧</span></div><div class="card-symbol" aria-hidden="true">圧</div><h3>Spiritual pressure</h3><p>Power felt before it is seen. The air bends around an unshakable will.</p></article>
+          <article class="arsenal-card"><div class="card-top"><span>ABILITY / 003</span><span>虚</span></div><div class="card-symbol" aria-hidden="true">虚</div><h3>Hollow evolution</h3><p>Cross the line between fear and instinct. Become the thing you face.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sequence" id="sequence">
+      <div class="section-inner">
+        <div class="section-head reveal"><div><div class="kicker">The conflict unfolds</div><h2>Before the<br><em>last strike.</em></h2></div><p class="section-note">A visual timeline of a world at war. Scroll through the turning points and feel the tension rise.</p></div>
+        <div class="sequence-list">
+          <article class="sequence-item reveal"><span class="sequence-no">01 —</span><h3 class="sequence-title">The balance breaks</h3><p class="sequence-desc">Silence falls over the living world. Something ancient moves beyond the veil.</p><span class="sequence-state">The warning</span></article>
+          <article class="sequence-item reveal"><span class="sequence-no">02 —</span><h3 class="sequence-title">Shadows declare war</h3><p class="sequence-desc">Old truths surface. Allies and enemies are forced to reveal their true nature.</p><span class="sequence-state">The invasion</span></article>
+          <article class="sequence-item reveal"><span class="sequence-no">03 —</span><h3 class="sequence-title">Power is reborn</h3><p class="sequence-desc">The limits of yesterday fall away. Every choice becomes a point of no return.</p><span class="sequence-state">The awakening</span></article>
+          <article class="sequence-item reveal"><span class="sequence-no">04 —</span><h3 class="sequence-title">One final divide</h3><p class="sequence-desc">Three worlds hang in the balance. The final strike will change everything.</p><span class="sequence-state">The reckoning</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="finale" id="finale">
+      <div class="finale-content reveal"><div class="eyebrow" style="justify-content:center">The end is only a beginning</div><h2>Face the <span>inevitable.</span></h2><p>The worlds are calling. Draw your resolve, choose your path, and step beyond the final divide.</p><a class="button-primary" href="#top"><span>Return to the beginning</span><span class="arrow" aria-hidden="true">↑</span></a></div>
+    </section>
+  </main>
+  <footer class="footer"><span><strong>THE FINAL DIVIDE</strong> — fan-made concept experience</span><span>Independent tribute · Not affiliated with BLEACH rights holders</span><a href="#top">Back to top ↑</a></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    (() => {
+      'use strict';
+      const nav = document.getElementById('nav');
+      const progress = document.getElementById('progress-bar');
+      const particles = document.getElementById('particles');
+      const tabs = Array.from(document.querySelectorAll('.faction-tab'));
+      const panel = document.getElementById('faction-panel');
+      const toast = document.getElementById('toast');
+      let toastTimer;
+
+      const factions = {
+        reaper: { number: 'FACTION 001 — THE BALANCE', title: 'Soul<br>Reapers', description: 'Guardians of the cycle between life and death. They carry the weight of every soul and stand against the collapse of the worlds with discipline, resolve, and a blade that answers to its wielder.', force: 'ZANPAKUTŌ', style: 'RELEASE & REVEAL', symbol: '斬', caption: 'Spiritual pressure / 01' },
+        quincy: { number: 'FACTION 002 — THE ERASURE', title: 'The<br>Quincy', description: 'A disciplined empire that turns spiritual particles into weapons. Precision, conviction, and a relentless belief in their own truth shape a force capable of challenging the established order.', force: 'REISHI CONTROL', style: 'PRECISION & RANGE', symbol: '弓', caption: 'Reishi alignment / 02' },
+        hollow: { number: 'FACTION 003 — THE INSTINCT', title: 'The<br>Hollows', description: 'Born from longing and transformed by hunger, Hollows embody the untamed edge of the spiritual world. Their evolution is raw, unpredictable, and never without a cost.', force: 'INSTINCT', style: 'ADAPT & DEVOUR', symbol: '虚', caption: 'Evolution threshold / 03' }
+      };
+
+      function updateScroll() {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.width = (scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0) + '%';
+        nav.classList.toggle('scrolled', window.scrollY > 20);
+      }
+      window.addEventListener('scroll', updateScroll, { passive: true });
+      window.addEventListener('resize', updateScroll);
+      updateScroll();
+
+      function selectFaction(key, moveFocus = false) {
+        const data = factions[key];
+        if (!data) return;
+        tabs.forEach(tab => {
+          const active = tab.dataset.faction === key;
+          tab.setAttribute('aria-selected', String(active));
+          tab.tabIndex = active ? 0 : -1;
+          if (active && moveFocus) tab.focus();
+        });
+        panel.dataset.faction = key;
+        panel.setAttribute('aria-labelledby', 'tab-' + key);
+        document.getElementById('faction-number').textContent = data.number;
+        document.getElementById('faction-title').innerHTML = data.title;
+        document.getElementById('faction-description').textContent = data.description;
+        document.getElementById('faction-force').textContent = data.force;
+        document.getElementById('faction-style').textContent = data.style;
+        document.getElementById('faction-symbol').textContent = data.symbol;
+        document.getElementById('faction-caption').textContent = data.caption;
+      }
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => selectFaction(tab.dataset.faction));
+        tab.addEventListener('keydown', event => {
+          if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+          event.preventDefault();
+          let next = index;
+          if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+          if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+          if (event.key === 'Home') next = 0;
+          if (event.key === 'End') next = tabs.length - 1;
+          selectFaction(tabs[next].dataset.faction, true);
+        });
+      });
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove('show'), 2200);
+      }
+      document.querySelectorAll('a[href="#finale"]').forEach(link => {
+        link.addEventListener('click', () => showToast('The final divide awaits.'));
+      });
+
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if ('IntersectionObserver' in window && !reducedMotion) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+      } else {
+        document.querySelectorAll('.reveal').forEach(element => element.classList.add('visible'));
+      }
+
+      if (!reducedMotion && particles) {
+        const count = window.innerWidth < 600 ? 18 : 34;
+        const fragment = document.createDocumentFragment();
+        for (let i = 0; i < count; i += 1) {
+          const particle = document.createElement('i');
+          particle.className = 'particle';
+          particle.style.left = (Math.random() * 100) + '%';
+          particle.style.top = (45 + Math.random() * 60) + '%';
+          particle.style.setProperty('--dur', (5 + Math.random() * 9) + 's');
+          particle.style.setProperty('--delay', (-Math.random() * 12) + 's');
+          particle.style.setProperty('--drift', ((Math.random() - .5) * 100) + 'px');
+          fragment.appendChild(particle);
+        }
+        particles.appendChild(fragment);
+      }
+    })();
+  </script>
+</body>
+</html>
